@@ -13,7 +13,6 @@ jobs:
     - &deploy-conda-stage       # Conda for linux
       stage: deploy_tag
       name: "Deploy Conda"
-      env: CONDA_TOKEN=$CONDA_UPLOAD_TOKEN_TAG
       before_install:
         # Prepare folders
         - mkdir -p $MINICONDA_DIR
@@ -53,7 +52,7 @@ jobs:
 
       after_success:
         # Upload conda package
-        - anaconda -t $CONDA_TOKEN upload bld-dir/`echo $TRAVIS_OS_NAME`-64/*.tar.bz2
+        - anaconda -t $CONDA_UPLOAD_TOKEN_TAG upload bld-dir/`echo $TRAVIS_OS_NAME`-64/*.tar.bz2
 
     - <<: *deploy-conda-stage   # Conda for MacOS
       os: osx
