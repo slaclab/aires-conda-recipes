@@ -13,8 +13,8 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}   # [osx]
-    - {{ compiler('cxx') }} # [osx]
+    - clang_osx-64   [osx]
+    - clangxx_osx-64 [osx]
   host:
     - epics-base >=7
   run:
