@@ -48,7 +48,7 @@ jobs:
 
       script:
         # Build conda package
-        - conda build --debug recipes/pcas --output-folder bld-dir -c defaults -c conda-forge -c lcls-ii
+        - conda build --debug recipes/pcas --output-folder bld-dir -c defaults -c lcls-ii -c conda-forge
 
       after_success:
         # Upload conda package
