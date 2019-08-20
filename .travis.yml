@@ -7,9 +7,6 @@ env:
 
 jobs:
   include:
-    - stage: conda build
-      env: PACKAGE=legion
-      script: ./scripts/build_conda_package.sh
 
     - &deploy-conda-stage       # Conda for linux
       stage: deploy_dev
