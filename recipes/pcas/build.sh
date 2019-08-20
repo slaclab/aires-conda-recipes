@@ -23,3 +23,13 @@ for file in $BINS ; do
     ln -vs ../pcas/bin/$EPICS_HOST_ARCH/$file .
 done
 cd -
+
+mkdir -p $PREFIX/etc/conda/activate.d
+mkdir -p $PREFIX/etc/conda/deactivate.d
+ACTIVATE=$PREFIX/etc/conda/activate.d/epics_pcas.sh
+DEACTIVATE=$PREFIX/etc/conda/deactivate.d/epics_pcas.sh
+echo "export EPICS_PCAS_ROOT=/pcas" >> $ACTIVATE
+echo "unset EPICS_PCAS_ROOT" >> $DEACTIVATE
+unset ACTIVATE
+unset DEACTIVATE
+
