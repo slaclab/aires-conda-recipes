@@ -29,3 +29,4 @@ mkdir -p $PREFIX/etc/conda/deactivate.d
 echo "export EPICS_PCAS_ROOT=/pcas" > $PREFIX/etc/conda/activate.d/epics_pcas.sh
 echo "unset EPICS_PCAS_ROOT" > $PREFIX/etc/conda/deactivate.d/epics_pcas.sh
 
+
