@@ -49,7 +49,9 @@ jobs:
       script:
         # Build conda package
         - conda build --debug recipes/epics-base --output-folder bld-dir -c defaults -c tidair-packages -c conda-forge
+          #- if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then
           #- conda build --debug recipes/pcas       --output-folder bld-dir -c defaults -c tidair-packages -c conda-forge
+          #fi
 
       after_success:
         # Upload conda package
