@@ -5,8 +5,7 @@ env:
   global:
    - PACKAGE_DIR=$HOME/packages
    - MINICONDA_DIR=$PACKAGE_DIR/miniconda
-   - secure: "TxMa6lyHGulO+Q4EmWgp/2ySI8xiDoBoPMwaFVJVGAWfBtTbtvjDLqk2EKjPvoBfE53lSwn41eV4/3ypbuX+7Y+whjj32muiGDp88vhxchyTlPbHORHlCyusv+96n16PORtfty+vXN7Fw+EB8LssUBqYzdQFVdF8lOJMKmmVCxOsedQdFaaVcT2TnV4qqEQGPrDn7KBtMjJw5W10JglcYHh+Ls95RsaGjp5of9H7pzefqHApoDAmyHbVQgireRIwmrpEuGP5y+MLcmhyVQtVYqiD5peoUG+UywLNXehMHQWq7iLZlUlV4yJx9/b8WzJGAC4cI7J/bPw+bOaUyiyW5DX8MYCv7nqLPPA9elap6mIKbMZhWdV09yug/om5/9MAESGufa9x3KlCfIhQXMTPVk1tAdahorV6blOjLauawCC84hX98t6bqy8Qx59kyOa46q6t1L1RTr6dfzzWE5PGh70pqXyQM2Q3XDGWR+1IKT2bI5SfS+k6J+fYL4PytQq3n+CGK10prSQcirFL13VtjwGBZM4/wqbzgWxEOtpDH5sndEZj9E4oP6BoIErzL3ZjWl0hFZPc/v9G2BgyG0JEYRc55xKDlTi1u4dZx0qmrQ3NHVnuSMahO20TtWHYVf3YYcDRyQXogQSfTy/xtqmq/24NJJjueYjuu54OiX2eXRw="
-   - secure: "p3lbSd6VJNesTv2SmY7aGvUPpdRZTr6Nxckag6Quezk7ya1a4s1MBr1r8ZDp99jcFv/TbvrdkAgYQucQY2VxwIo9TSIS/VEW3H/CJS3/G+GJuKTmjaKcCjTXBS6AJ8odxACegHVG7TTlCyzZG110UA8XZe1QPbi9nZ8HwYDigdHhgMsUHqHDjRYZCg7k3WGOyPLPCgfgV7PlvHBVnGyn7+OxDAKf1xDo8XC2OvQkS7L3Ww/Mq+Zvc2+OGuuG70apY27e8m1V+MGB0wLbrHbZcFw1f31Jivf3I3K3jk7l2Z62BK/XL1G6zzz2gBBAOiqR2fZ7muYXYbIdZKhqbV3yAGterBnMqdlD9QqQHKF3FdZfO7qRgs/YYrBEbjYaq4gTL3FGvyluxqLjrw++8m1t0W0S7za3GKozeOxU8o85cFep8wOxWPUblWucwuP7yiZBu4lDgkrt614zIUhDa84oz8zqVkDogJ8H+dWkvONsPaEWZ2n1BjQe/QM9i18SATZYI8hI49yWXyjemMEpdCH0p9rlsotwTsDRNUwZiqRB6HS0dfO5tbHlKc5i97U4dIqt8S+mv4t3hqZiEEYvcn8PdeBsvMrIfviGjnAhPqoIiMg90DYmNAl91iZ/ZpyQvQihUvEyXZy3Ed+VHuaIBgfdf9ID1iRYJ7vnpUHDk2poVjk="
+   - secure: "O6OHyjFmd8CMJNdwT1OiHm07qb+9Xjk6leaXesUwBmmBD+EgTf97GIcfmVJ1M1zHDTMevWVIxE0VP+/nX4Q7iqyO2O8d6LAp+5XE5zeJ5gyyG2xgBdTaitwseM+/dDzL0mzUpC8G+GB5fg7OR2FhWwuymFEAY3XQboGK7uTUBaT4rzcxDUIrf+zEe01gqOKg9ag+7bRkU51vvi611UYk1+ivtSAlDHf6CRH4LflyeWoLpihIAXgfd4i+VStLFBEAFPO3xeHrFyg2vZijRwwdqF8q3ejK7tZnnDtKT+n2OfgQmBm8QolMp6Chs4pYvmt//TeGlEiA/w0iVgbOA3j5KD2AYppiXiSjWycufgwRX5X94e/+qDMOK1ut3mULPsLl4XbETJVtH7KnlmT0ZdXjyp5xB/DJg31tGH2hI0/WqsEzHA2bmYspS6dcsgo/6VbKcsCNzWaQ+MZ3jiBVIhDFuu90kqyZFPj/ah1zs0ibyKgg/Kq0rxOHm0qVbSGAONWxdUpWerCtIpBVz52s9kbHDFOCmrRvHicefkMuIFPqamRuJycg6Pc6z4Koy3G23gHCYgl/nUZNOHjEU6NQtgtkSoBKQgWUhYeBcvDVuwzMwZ/kpxgZqsVZkcM0HaGypYqxt4lPkhxKMdml9ZrgzK/I5emeFzHg7ARFlmit7Fw2gTw="
 
 jobs:
   include:
@@ -49,13 +48,13 @@ jobs:
 
       script:
         # Build conda package
-        - conda build --debug recipes/pcas --output-folder bld-dir -c defaults -c lcls-ii -c conda-forge
+        - conda build --debug recipes/epics-base --output-folder bld-dir -c defaults -c tidair-packages -c conda-forge
+        - conda build --debug recipes/pcas       --output-folder bld-dir -c defaults -c tidair-packages -c conda-forge
 
       after_success:
         # Upload conda package
         - travis env list
-        - anaconda -t $CONDA_UPLOAD_TOKEN_TAG upload bld-dir/`echo $TRAVIS_OS_NAME`-64/*.tar.bz2
-        - anaconda -t $CONDA_UPLOAD_TOKEN_DEV upload bld-dir/`echo $TRAVIS_OS_NAME`-64/*.tar.bz2
+        - anaconda -t $CONDA_UPLOAD_TOKEN upload bld-dir/`echo $TRAVIS_OS_NAME`-64/*.tar.bz2
 
     - <<: *deploy-conda-stage   # Conda for MacOS
       os: osx
