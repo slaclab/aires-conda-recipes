@@ -53,7 +53,6 @@ jobs:
 
       after_success:
         # Upload conda package
-        - travis env list
         - anaconda -t $CONDA_UPLOAD_TOKEN upload bld-dir/`echo $TRAVIS_OS_NAME`-64/*.tar.bz2
 
     - <<: *deploy-conda-stage   # Conda for MacOS
