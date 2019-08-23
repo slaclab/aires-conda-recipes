@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "============================== Starting pcas build ====================="
+
 echo "EPICS BASE IS $EPICS_BASE"
 cat <<EOF > configure/RELEASE.local
 EPICS_BASE=$EPICS_BASE
