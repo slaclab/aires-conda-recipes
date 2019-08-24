@@ -15,8 +15,8 @@ requirements:
   build:
     - gcc_linux-64   [linux]
     - gxx_linux-64   [linux]
-    - {{ compiler('c') }}   # [osx]
-    - {{ compiler('cxx') }} # [osx]
+    - clang_osx-64   [osx]
+    - clangxx_osx-64 [osx]
   host:
     - python
     - epics-base >=7
