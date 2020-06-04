@@ -59,7 +59,7 @@ jobs:
         - anaconda -t $CONDA_UPLOAD_TOKEN upload bld-dir/`echo $TRAVIS_OS_NAME`-64/epics-base*.tar.bz2
         - anaconda -t $CONDA_UPLOAD_TOKEN upload bld-dir/`echo $TRAVIS_OS_NAME`-64/p4p*.tar.bz2
         - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then
-           anaconda -t $CONDA_UPLOAD_TOKEN upload bld-dir/`echo $TRAVIS_OS_NAME`-64/pcas*.tar.bz2
+           anaconda -t $CONDA_UPLOAD_TOKEN upload bld-dir/`echo $TRAVIS_OS_NAME`-64/pcas*.tar.bz2;
           fi
 
           # - <<: *deploy-conda-stage   # Conda for MacOS
