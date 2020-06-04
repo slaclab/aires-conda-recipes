@@ -14,8 +14,8 @@ make -j $CPU_COUNT INSTALL_LOCATION=$PREFIX/pcas
 
 # Symlink libraries into $PREFIX/lib
 cd $PREFIX/lib
-find ../epics/lib/$EPICS_HOST_ARCH/ -name \*.so\* -exec ln -vs "{}" . ';' || : # linux
-find ../epics/lib/$EPICS_HOST_ARCH/ -name \*.dylib\* -exec ln -vs "{}" . ';' || : # osx
+find ../pcas/lib/$EPICS_HOST_ARCH/ -name \*.so\* -exec ln -vs "{}" . ';' || : # linux
+find ../pcas/lib/$EPICS_HOST_ARCH/ -name \*.dylib\* -exec ln -vs "{}" . ';' || : # osx
 cd -
 
 # Setup symlinks for utilities
