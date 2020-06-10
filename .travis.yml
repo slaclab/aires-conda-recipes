@@ -51,7 +51,7 @@ jobs:
         - conda build recipes/epics-base --output-folder bld-dir -c tidair-packages -c conda-forge
         - conda build recipes/p4p        --output-folder bld-dir -c tidair-packages -c conda-forge
         - if [[ "$TRAVIS_OS_NAME" != "osx" ]]; then
-           conda build recipes/pcas   --output-folder bld-dir -c tidair-packages -c conda-forge;
+           conda build recipes/pcas   --output-folder bld-dir -c conda-forge;
           fi
 
       after_success:

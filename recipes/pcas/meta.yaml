@@ -9,14 +9,12 @@ source:
   git_tag: v{{ version }}
 
 build:
-  number: 8
+  number: 9
 
 requirements:
   build:
-    - gcc_linux-64   [linux]
-    - gxx_linux-64   [linux]
-    - clang_osx-64   [osx]
-    - clangxx_osx-64 [osx]
+    - {{ compiler ('c') }}
+    - {{ compiler ('cxx') }}
   host:
     - epics-base >=7
   run:
