@@ -14,8 +14,8 @@ make -j $CPU_COUNT INSTALL_LOCATION=$PREFIX/pcas
 
 mkdir -p $PREFIX/etc/conda/activate.d
 cat <<EOF > $PREFIX/etc/conda/activate.d/epics-pcas_activate.sh
-export EPICS_PCAS_ROOT="${CONDA_PREFIX}/pcas"
-export EPICS_PCAS_HOST_BIN="${EPICS_PCAS_ROOT}/bin/${EPICS_HOST_ARCH}"
+export EPICS_PCAS_ROOT="\${CONDA_PREFIX}/pcas"
+export EPICS_PCAS_HOST_BIN="\${EPICS_PCAS_ROOT}/bin/${EPICS_HOST_ARCH}"
 export PATH=\$EPICS_PCAS_HOST_BIN:\$PATH
 EOF
 
