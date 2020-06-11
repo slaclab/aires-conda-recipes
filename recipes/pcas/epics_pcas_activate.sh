@@ -1,4 +1,0 @@
-
-
-export EPICS_PCAS_ROOT=${CONDA_PREFIX}/pcas
-
