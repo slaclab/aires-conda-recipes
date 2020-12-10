@@ -76,10 +76,14 @@ jobs:
               echo ::set-output name=os::linux-64
           fi
 
-      - name: Build And Upload
+      - name: Build Packages
         run: |
           export PATH="${HOME}/miniconda/bin:$PATH"
           source ${HOME}/miniconda/etc/profile.d/conda.sh
           conda build recipes/pcas --output-folder bld-dir -c conda-forge
-          anaconda -t ${{ steps.get_image_info.outputs.token }} upload bld-dir/${{ steps.get_image_info.outputs.os }}/*.tar.bz2
 
+      - name: Upload Packages
+        run: |
+          export PATH="${HOME}/miniconda/bin:$PATH"
+          source ${HOME}/miniconda/etc/profile.d/conda.sh
+          anaconda -t ${{ steps.get_image_info.outputs.token }} upload bld-dir/${{ steps.get_image_info.outputs.os }}/*.tar.bz2
