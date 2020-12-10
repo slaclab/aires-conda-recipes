@@ -1,0 +1,27 @@
+diff -Naur pcas_orig/src/pcas/generic/ioBlocked.h pcas_new/src/pcas/generic/ioBlocked.h
+--- pcas_orig/src/pcas/generic/ioBlocked.h	2020-12-10 00:23:31.000000000 -0800
++++ pcas_new/src/pcas/generic/ioBlocked.h	2020-12-10 00:28:00.000000000 -0800
+@@ -6,7 +6,7 @@
+ *     Operator of Los Alamos National Laboratory.
+ * EPICS BASE Versions 3.13.7
+ * and higher are distributed subject to a Software License Agreement found
+-* in file LICENSE that is included with this distribution. 
++* in file LICENSE that is included with this distribution.
+ \*************************************************************************/
+ /*
+  *      Author  Jeffrey O. Hill
+@@ -40,7 +40,7 @@
+ 	virtual void ioBlockedSignal ();
+ };
+ 
+-class ioBlockedList : private tsDLList<ioBlocked> {
++class ioBlockedList : public tsDLList<ioBlocked> {
+ friend class ioBlocked;
+ public:
+ 	ioBlockedList ();
+@@ -57,4 +57,4 @@
+ }
+ 
+ #endif // ioBlockedh
+- 
++
